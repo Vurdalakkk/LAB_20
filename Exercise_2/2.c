@@ -1,15 +1,15 @@
 #define _CRT_SECURE_NO_WARNINGS
 
-// Необходимые библиотеки
+// РќРµРѕР±С…РѕРґРёРјС‹Рµ Р±РёР±Р»РёРѕС‚РµРєРё
 #include <stdio.h>
 #include <locale.h>
 #include <string.h>
 #include <math.h>
 
-// Основная функция
+// РћСЃРЅРѕРІРЅР°СЏ С„СѓРЅРєС†РёСЏ
 int main()
 {
-    // Русская локаль
+    // Р СѓСЃСЃРєР°СЏ Р»РѕРєР°Р»СЊ
     setlocale(LC_CTYPE, "RUS");
 
     FILE* in, * out;
@@ -17,15 +17,15 @@ int main()
     double number, result;
     int counter = 1;
 
-    printf("Преобразование чисел в файле\n");
-    printf("Вариант 7: К каждому значению добавить его порядковый номер\n\n");
+    printf("РџСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёРµ С‡РёСЃРµР» РІ С„Р°Р№Р»Рµ\n");
+    printf("Р’Р°СЂРёР°РЅС‚ 7: Рљ РєР°Р¶РґРѕРјСѓ Р·РЅР°С‡РµРЅРёСЋ РґРѕР±Р°РІРёС‚СЊ РµРіРѕ РїРѕСЂСЏРґРєРѕРІС‹Р№ РЅРѕРјРµСЂ\n\n");
 
-    // Ввод имени файла
-    printf("Введите имя файла с числами: ");
+    // Р’РІРѕРґ РёРјРµРЅРё С„Р°Р№Р»Р°
+    printf("Р’РІРµРґРёС‚Рµ РёРјСЏ С„Р°Р№Р»Р° СЃ С‡РёСЃР»Р°РјРё: ");
     scanf("%s", input_file);
     getchar();
 
-    // Создание имени выходного файла
+    // РЎРѕР·РґР°РЅРёРµ РёРјРµРЅРё РІС‹С…РѕРґРЅРѕРіРѕ С„Р°Р№Р»Р°
     strcpy(output_file, input_file);
     char* dot = strrchr(output_file, '.');
     if (dot != NULL)
@@ -37,26 +37,26 @@ int main()
         strcat(output_file, "_numbered.txt");
     }
 
-    // Открытие файлов
+    // РћС‚РєСЂС‹С‚РёРµ С„Р°Р№Р»РѕРІ
     if ((in = fopen(input_file, "rt")) == NULL)
     {
-        printf("Ошибка открытия файла %s\n", input_file);
+        printf("РћС€РёР±РєР° РѕС‚РєСЂС‹С‚РёСЏ С„Р°Р№Р»Р° %s\n", input_file);
         getchar();
         return 0;
     }
 
     if ((out = fopen(output_file, "wt")) == NULL)
     {
-        printf("Ошибка создания файла %s\n", output_file);
+        printf("РћС€РёР±РєР° СЃРѕР·РґР°РЅРёСЏ С„Р°Р№Р»Р° %s\n", output_file);
         fclose(in);
         getchar();
         return 0;
     }
 
-    printf("\nОбработка файла...\n");
-    printf("Исходные числа -> Результат\n");
+    printf("\nРћР±СЂР°Р±РѕС‚РєР° С„Р°Р№Р»Р°...\n");
+    printf("РСЃС…РѕРґРЅС‹Рµ С‡РёСЃР»Р° -> Р РµР·СѓР»СЊС‚Р°С‚\n");
 
-    // Чтение и обработка чисел
+    // Р§С‚РµРЅРёРµ Рё РѕР±СЂР°Р±РѕС‚РєР° С‡РёСЃРµР»
     while (fscanf(in, "%lf", &number) == 1)
     {
         result = number + counter;
@@ -70,9 +70,9 @@ int main()
     fclose(in);
     fclose(out);
 
-    printf("\nОбработка завершена!\n");
-    printf("Результат сохранен в файле: %s\n", output_file);
-    printf("Обработано чисел: %d\n", counter - 1);
+    printf("\nРћР±СЂР°Р±РѕС‚РєР° Р·Р°РІРµСЂС€РµРЅР°!\n");
+    printf("Р РµР·СѓР»СЊС‚Р°С‚ СЃРѕС…СЂР°РЅРµРЅ РІ С„Р°Р№Р»Рµ: %s\n", output_file);
+    printf("РћР±СЂР°Р±РѕС‚Р°РЅРѕ С‡РёСЃРµР»: %d\n", counter - 1);
 
     getchar();
     return 0;
